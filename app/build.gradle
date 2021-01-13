@@ -1,0 +1,124 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion build_version.compileSdkVersion
+    buildToolsVersion build_version.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.sm9i.eyemvvm"
+
+        minSdkVersion build_version.minSdkVersion
+        targetSdkVersion build_version.targetSdkVersion
+
+        versionCode build_version.versionCode
+        versionName build_version.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation 'androidx.core:core-ktx:1.3.2'
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.1'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //kotlin
+    implementation libs.kotlin_stdlib
+    //ktx
+    implementation libs.core_ktx
+    //androidx_appcompat
+    implementation libs.androidx_appcompat
+
+    //test
+    testImplementation libs.junit
+    androidTestImplementation libs.test_runner
+    androidTestImplementation libs.espresso_core
+
+    //material
+    implementation libs.material
+
+    //constraintlayout
+    implementation libs.androidx_constraintlayout
+
+    //recyclerView
+    implementation libs.BaseRecyclerViewAdapterHelper
+
+    //fresco
+    implementation libs.fresco
+
+    //ijk
+    implementation libs.ijkplayer_java
+    implementation libs.ijkplayer_armv7a
+    implementation libs.ijkplayer_armv5
+    implementation libs.ijkplayer_arm64
+    implementation libs.ijkplayer_x86
+    implementation libs.ijkplayer_x86_64
+
+    //loadingView
+    implementation libs.loading_view
+    implementation libs.banner
+
+    //flex
+    implementation libs.flexbox
+
+    //pageIndicator
+    implementation libs.page_indicator
+
+    //ARouter
+    api libs.arouter_api
+    kapt libs.arouter_compiler
+
+    //LeakCanary
+    debugImplementation libs.leakcanary_android
+    releaseImplementation libs.leakcannary_andoid_no_op
+    debugImplementation libs.leakcannary_support_fragment
+
+    //navigation
+    implementation libs.navigation_fragment_ktx
+    implementation libs.navigation_ui_ktx
+
+    //koin
+    implementation libs.koin_core
+    implementation libs.koin_android
+    implementation libs.koin_android_scope
+    implementation libs.koin_android_viewmodel
+
+}
