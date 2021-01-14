@@ -60,6 +60,8 @@ dependencies {
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    implementation project(':base')
+
     //kotlin
     implementation libs.kotlin_stdlib
     //ktx

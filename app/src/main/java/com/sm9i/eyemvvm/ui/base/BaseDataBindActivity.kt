@@ -2,10 +2,16 @@ package com.sm9i.eyemvvm.ui.base
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
+import android.widget.ImageView
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.sm9i.base.utils.showKeyboard
 import com.sm9i.eyemvvm.R
+import com.sm9i.eyemvvm.widget.font.CustomFontTextView
+import com.sm9i.eyemvvm.widget.font.FontType
 
 
 abstract class BaseDataBindActivity<T : ViewDataBinding> : AppCompatActivity() {
@@ -23,7 +29,40 @@ abstract class BaseDataBindActivity<T : ViewDataBinding> : AppCompatActivity() {
     }
 
 
-    protected fun initToolBar(){
+    /**
+     * 初始工具栏 默认加粗
+     */
+    protected fun initToolBar(
+        toolbar: View,
+        title: String? = null,
+        fontType: FontType = FontType.BOLD
+    ) {
+//        val ivBack = toolbar.findViewById<ImageView>(R.id.iv_back)
+//        ivBack.setOnClickListener {
+//            showKeyboard(false)
+//            finish()
+//        }
+//        val tvTitle = toolbar.findViewById<CustomFontTextView>(R.id.tv_title)
+//        tvTitle.setFontType(fontType)
+//        tvTitle.text = title
+    }
+
+    /**
+     * 初始化工具栏 resId
+     */
+    protected fun initToolBar(
+        toolbar: View,
+        @StringRes id: Int? = null,
+        fontType: FontType = FontType.BOLD
+    ) {
+//        val ivBack = toolbar.findViewById<ImageView>(R.id.iv_back)
+//        ivBack.setOnClickListener {
+//            showKeyboard(false)
+//            finish()
+//        }
+//        val tvTitle = toolbar.findViewById<CustomFontTextView>(R.id.tv_title)
+//        tvTitle.setFontType(fontType)
+//        tvTitle.setText(id!!)
 
     }
 
