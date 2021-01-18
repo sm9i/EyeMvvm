@@ -1,4 +1,4 @@
-package com.sm9i.eyemvvm.widget.vierpager
+package com.sm9i.eyemvvm.widget.viewpager
 
 import android.content.Context
 import android.util.AttributeSet

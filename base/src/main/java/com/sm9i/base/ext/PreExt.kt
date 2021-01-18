@@ -20,7 +20,6 @@ inline fun SharedPreferences.boolean(
         SharedPreferences::getBoolean,
         SharedPreferences.Editor::putBoolean
     )
-
 }
 
 inline fun <T> SharedPreferences.delegate(
@@ -29,6 +28,7 @@ inline fun <T> SharedPreferences.delegate(
     crossinline getter: SharedPreferences.(String, T) -> T,
     crossinline setter: SharedPreferences.Editor.(String, T) -> SharedPreferences.Editor
 ): ReadWriteProperty<Any, T> = object : ReadWriteProperty<Any, T> {
+
     override fun getValue(thisRef: Any, property: KProperty<*>): T =
         getter(key ?: property.name, defaultValue)
 

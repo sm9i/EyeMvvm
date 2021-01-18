@@ -6,8 +6,11 @@ import android.widget.VideoView
 import com.sm9i.eyemvvm.player.MeasureHelper
 
 
-class FullScreenVideoView : VideoView {
+/**
+ * 全屏VideoView
+ */
 
+class FullScreenVideoView : VideoView {
 
     private var mMeasureHelper: MeasureHelper = MeasureHelper(this)
 
@@ -21,7 +24,13 @@ class FullScreenVideoView : VideoView {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        mMeasureHelper.doMeasure(widthMeasureSpec, heightMeasureSpec)
+        setMeasuredDimension(mMeasureHelper.measureWidth, mMeasureHelper.measureHeight)
+    }
 
+    fun setAspectRatio(aspectRatio: Int) {
+        mMeasureHelper.setAspectRatio(aspectRatio)
+        requestLayout()
     }
 
 }
